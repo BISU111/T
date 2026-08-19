@@ -1,0 +1,3887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Tanu ❤️ | A Little World Made For You</title>
+
+<meta name="description"
+content="A cinematic birthday memory experience created with love, gratitude and good wishes.">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#05020b;
+    color:#fff;
+    font-family:Georgia, "Times New Roman", serif;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --purple:#a855f7;
+    --purple2:#7c3aed;
+    --light-purple:#d8b4fe;
+    --pink:#f0abfc;
+    --gold:#f6d365;
+    --dark:#05020b;
+    --glass:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.12);
+}
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#030106;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:opacity 1.5s ease, visibility 1.5s ease;
+}
+
+#loader.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-star{
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    box-shadow:
+        0 0 10px white,
+        0 0 30px #a855f7,
+        0 0 60px #a855f7;
+    animation:pulseStar 2s infinite;
+}
+
+.loader-text{
+    margin-top:30px;
+    color:#ddd;
+    letter-spacing:5px;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+@keyframes pulseStar{
+    0%,100%{
+        transform:scale(.5);
+        opacity:.3;
+    }
+    50%{
+        transform:scale(1.8);
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   STAR BACKGROUND
+========================================================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:#fff;
+    animation:twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.15;
+        transform:scale(.5);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.6);
+    }
+}
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.ambient{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(124,58,237,.08);
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-1;
+}
+
+.ambient.one{
+    top:-200px;
+    left:-200px;
+}
+
+.ambient.two{
+    bottom:-200px;
+    right:-200px;
+    background:rgba(236,72,153,.06);
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music-btn{
+    position:fixed;
+    right:20px;
+    top:20px;
+    z-index:5000;
+    width:48px;
+    height:48px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(10,5,20,.7);
+    backdrop-filter:blur(15px);
+    color:white;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+    transition:.4s;
+}
+
+.music-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(168,85,247,.5);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:30px;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:900px;
+    position:relative;
+    z-index:3;
+}
+
+.small-title{
+    color:#c4b5fd;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    font-size:11px;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-size:clamp(55px,12vw,150px);
+    font-weight:normal;
+    letter-spacing:8px;
+    background:linear-gradient(
+        120deg,
+        #fff,
+        #d8b4fe,
+        #fff,
+        #f0abfc
+    );
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradientText 7s linear infinite;
+}
+
+@keyframes gradientText{
+    to{
+        background-position:300% center;
+    }
+}
+
+.hero-subtitle{
+    margin:30px auto;
+    max-width:650px;
+    line-height:2;
+    color:#cfc5d9;
+    font-size:17px;
+}
+
+.open-btn{
+    margin-top:25px;
+    padding:16px 35px;
+    border-radius:50px;
+    border:1px solid rgba(216,180,254,.4);
+    background:rgba(168,85,247,.12);
+    color:#fff;
+    font-size:14px;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:.5s;
+    box-shadow:0 0 0 rgba(168,85,247,0);
+}
+
+.open-btn:hover{
+    transform:translateY(-4px);
+    background:rgba(168,85,247,.25);
+    box-shadow:
+        0 0 30px rgba(168,85,247,.25),
+        0 0 80px rgba(168,85,247,.1);
+}
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#777;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.scroll::after{
+    content:"";
+    display:block;
+    width:1px;
+    height:45px;
+    background:linear-gradient(#aaa,transparent);
+    margin:10px auto;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    position:relative;
+    padding:130px 7%;
+    overflow:hidden;
+}
+
+.section-inner{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-label{
+    color:#a78bfa;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:10px;
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(38px,6vw,80px);
+    font-weight:normal;
+    line-height:1.05;
+    margin-bottom:30px;
+}
+
+.section-text{
+    max-width:700px;
+    color:#bcb3c6;
+    line-height:2;
+    font-size:17px;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    max-width:850px;
+    margin:60px auto 0;
+}
+
+.time-box{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:30px 15px;
+    backdrop-filter:blur(15px);
+}
+
+.time-box span{
+    display:block;
+    font-size:clamp(32px,5vw,60px);
+    color:#d8b4fe;
+}
+
+.time-box small{
+    color:#777;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:9px;
+}
+
+/* =========================================================
+   MEMORY CARDS
+========================================================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:60px;
+}
+
+.card{
+    min-height:250px;
+    border:1px solid var(--border);
+    background:linear-gradient(
+        145deg,
+        rgba(168,85,247,.09),
+        rgba(255,255,255,.025)
+    );
+    border-radius:25px;
+    padding:35px;
+    position:relative;
+    overflow:hidden;
+    transition:.6s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(168,85,247,.08);
+    filter:blur(50px);
+    right:-60px;
+    bottom:-60px;
+}
+
+.card:hover{
+    transform:translateY(-10px) rotateX(2deg);
+    border-color:rgba(216,180,254,.35);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+.card-icon{
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.card h3{
+    font-size:25px;
+    font-weight:normal;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.8;
+}
+
+/* =========================================================
+   KRISHNA
+========================================================= */
+
+.krishna{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(245,158,11,.08),
+            transparent 55%
+        );
+    text-align:center;
+}
+
+.blessing-circle{
+    width:280px;
+    height:280px;
+    margin:50px auto;
+    border-radius:50%;
+    border:1px solid rgba(246,211,101,.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    animation:slowRotate 20s linear infinite;
+}
+
+.blessing-circle::before,
+.blessing-circle::after{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px dashed rgba(246,211,101,.2);
+    border-radius:50%;
+}
+
+.blessing-circle::after{
+    inset:40px;
+}
+
+.krishna-symbol{
+    font-size:80px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes slowRotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(-8px)}
+    50%{transform:translateY(8px)}
+}
+
+/* =========================================================
+   FAMILY
+========================================================= */
+
+.family-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:60px;
+}
+
+.family-card{
+    padding:35px;
+    min-height:260px;
+    border-radius:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    transition:.5s;
+}
+
+.family-card:hover{
+    transform:translateY(-8px);
+    background:rgba(168,85,247,.08);
+}
+
+.family-icon{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin:0 auto 25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:34px;
+    background:radial-gradient(circle,#7c3aed,#24103c);
+    box-shadow:0 0 40px rgba(124,58,237,.2);
+}
+
+.family-card h3{
+    font-weight:normal;
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.family-card p{
+    color:#999;
+    line-height:1.7;
+}
+
+/* =========================================================
+   AIRPLANE JOURNEY
+========================================================= */
+
+.flight-section{
+    min-height:800px;
+    background:
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(30,64,175,.12),
+            transparent 55%
+        );
+}
+
+.flight-scene{
+    height:420px;
+    max-width:1100px;
+    margin:60px auto 0;
+    position:relative;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:35px;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #050716 0%,
+            #0b1028 55%,
+            #07030d 100%
+        );
+}
+
+.flight-moon{
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#eee;
+    right:10%;
+    top:15%;
+    box-shadow:0 0 40px rgba(255,255,255,.3);
+}
+
+.flight-stars span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+}
+
+.flight-cloud{
+    position:absolute;
+    width:350px;
+    height:90px;
+    border-radius:50%;
+    background:rgba(255,255,255,.035);
+    filter:blur(15px);
+    animation:cloudMove 18s linear infinite;
+}
+
+.cloud1{
+    top:50%;
+    left:-400px;
+}
+
+.cloud2{
+    top:65%;
+    left:-700px;
+    animation-delay:5s;
+}
+
+@keyframes cloudMove{
+    from{transform:translateX(0)}
+    to{transform:translateX(1800px)}
+}
+
+.flight-route{
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:52%;
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        rgba(168,85,247,.1),
+        rgba(216,180,254,.8),
+        rgba(168,85,247,.1)
+    );
+    box-shadow:0 0 15px rgba(168,85,247,.5);
+}
+
+.route-dot{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:12px;
+    letter-spacing:2px;
+    color:#d8b4fe;
+}
+
+.route-india{
+    left:7%;
+}
+
+.route-korea{
+    right:4%;
+}
+
+.plane{
+    position:absolute;
+    top:calc(52% - 20px);
+    left:10%;
+    font-size:40px;
+    filter:
+        drop-shadow(0 0 10px #d8b4fe)
+        drop-shadow(0 0 25px #7c3aed);
+    animation:flyPlane 8s cubic-bezier(.4,0,.2,1) infinite;
+    z-index:5;
+}
+
+@keyframes flyPlane{
+    0%{
+        left:8%;
+        transform:translateY(15px) rotate(0deg);
+    }
+
+    15%{
+        transform:translateY(-15px) rotate(-3deg);
+    }
+
+    50%{
+        transform:translateY(-50px) rotate(-2deg);
+    }
+
+    85%{
+        transform:translateY(-10px) rotate(2deg);
+    }
+
+    100%{
+        left:88%;
+        transform:translateY(0) rotate(0deg);
+    }
+}
+
+.flight-caption{
+    position:absolute;
+    bottom:30px;
+    width:100%;
+    text-align:center;
+    color:#aaa;
+    font-style:italic;
+}
+
+/* =========================================================
+   KOREA
+========================================================= */
+
+.korea-city{
+    margin-top:60px;
+    height:350px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    background:
+        linear-gradient(
+            180deg,
+            #07071d,
+            #121047 60%,
+            #090512
+        );
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.building{
+    position:absolute;
+    bottom:0;
+    width:70px;
+    background:#101022;
+    border-top:1px solid rgba(168,85,247,.2);
+}
+
+.building::after{
+    content:"";
+    position:absolute;
+    inset:15px 10px;
+    background:
+        repeating-linear-gradient(
+            180deg,
+            rgba(216,180,254,.3) 0 4px,
+            transparent 4px 18px
+        );
+}
+
+.b1{left:8%;height:150px}
+.b2{left:17%;height:220px}
+.b3{left:29%;height:120px}
+.b4{left:42%;height:260px}
+.b5{left:55%;height:180px}
+.b6{left:67%;height:230px}
+.b7{left:80%;height:145px}
+
+.seoul-sign{
+    position:absolute;
+    top:45%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:clamp(30px,6vw,80px);
+    color:#e9d5ff;
+    text-shadow:
+        0 0 20px #a855f7,
+        0 0 60px rgba(168,85,247,.6);
+    letter-spacing:10px;
+}
+
+/* =========================================================
+   BTS UNIVERSE
+========================================================= */
+
+.bts{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(124,58,237,.15),
+            transparent 65%
+        );
+}
+
+.galaxy{
+    height:500px;
+    max-width:1100px;
+    margin:60px auto 0;
+    border-radius:35px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at center,
+            #32105f 0%,
+            #10051d 35%,
+            #030107 80%
+        );
+    border:1px solid rgba(168,85,247,.2);
+}
+
+.nebula{
+    position:absolute;
+    width:500px;
+    height:500px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:rgba(168,85,247,.15);
+    filter:blur(80px);
+    animation:nebulaPulse 5s ease-in-out infinite;
+}
+
+@keyframes nebulaPulse{
+    0%,100%{transform:translate(-50%,-50%) scale(.9)}
+    50%{transform:translate(-50%,-50%) scale(1.15)}
+}
+
+.galaxy-title{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    font-size:clamp(35px,6vw,70px);
+    z-index:2;
+    text-shadow:0 0 40px rgba(168,85,247,.8);
+}
+
+.constellation-star{
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 30px #a855f7;
+    cursor:pointer;
+    animation:constellationPulse 2s infinite;
+}
+
+@keyframes constellationPulse{
+    0%,100%{transform:scale(.7);opacity:.6}
+    50%{transform:scale(1.4);opacity:1}
+}
+
+/* =========================================================
+   DREAM HOME
+========================================================= */
+
+.house{
+    width:min(700px,90%);
+    height:350px;
+    margin:60px auto;
+    position:relative;
+    background:linear-gradient(
+        145deg,
+        #241a31,
+        #100b17
+    );
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:10px 10px 25px 25px;
+    box-shadow:0 40px 80px rgba(0,0,0,.5);
+}
+
+.roof{
+    position:absolute;
+    top:-100px;
+    left:-30px;
+    width:calc(100% + 60px);
+    height:150px;
+    background:#1d1329;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+    border-top:1px solid rgba(216,180,254,.15);
+}
+
+.window{
+    position:absolute;
+    width:85px;
+    height:110px;
+    background:linear-gradient(#ffe9a8,#f6c453);
+    box-shadow:0 0 35px rgba(246,211,101,.25);
+    top:80px;
+}
+
+.window.one{left:18%}
+.window.two{right:18%}
+
+.door{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:90px;
+    height:170px;
+    background:#140b19;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.house-garden{
+    position:absolute;
+    bottom:-35px;
+    left:0;
+    width:100%;
+    height:40px;
+    background:linear-gradient(#15341d,#08130b);
+    border-radius:50%;
+}
+
+/* =========================================================
+   CAFE
+========================================================= */
+
+.cafe-card{
+    max-width:950px;
+    margin:60px auto 0;
+    min-height:430px;
+    border-radius:30px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(168,85,247,.08),
+            rgba(255,255,255,.025)
+        );
+}
+
+.cafe-counter{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:100px;
+    background:#171019;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.cafe-sign{
+    position:absolute;
+    top:50px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:18px 35px;
+    border:1px solid rgba(246,211,101,.4);
+    color:#f6d365;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    box-shadow:0 0 30px rgba(246,211,101,.08);
+}
+
+.coffee-cup{
+    position:absolute;
+    bottom:110px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:90px;
+    animation:coffeeFloat 4s ease-in-out infinite;
+}
+
+@keyframes coffeeFloat{
+    0%,100%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(-10px)}
+}
+
+.cafe-steam{
+    position:absolute;
+    bottom:205px;
+    left:50%;
+    color:#aaa;
+    font-size:35px;
+    opacity:.4;
+    animation:steam 3s infinite;
+}
+
+@keyframes steam{
+    from{
+        transform:translate(-50%,20px);
+        opacity:0;
+    }
+    50%{
+        opacity:.5;
+    }
+    to{
+        transform:translate(-50%,-50px);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   COOKING
+========================================================= */
+
+.food-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:60px;
+}
+
+.food{
+    height:180px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,.035);
+    transition:.5s;
+}
+
+.food:hover{
+    transform:translateY(-10px) rotate(-2deg);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.food span{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.food p{
+    color:#aaa;
+}
+
+/* =========================================================
+   APOLOGY
+========================================================= */
+
+.apology{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(168,85,247,.07),
+            transparent 60%
+        );
+}
+
+.letter{
+    max-width:850px;
+    margin:60px auto 0;
+    padding:60px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.02)
+        );
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:8px;
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.45);
+    position:relative;
+}
+
+.letter::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(216,180,254,.08);
+    pointer-events:none;
+}
+
+.letter p{
+    color:#c8bfce;
+    font-size:17px;
+    line-height:2.2;
+    margin-bottom:25px;
+}
+
+.letter .signature{
+    margin-top:40px;
+    color:#d8b4fe;
+    font-size:24px;
+}
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+.question-box{
+    max-width:800px;
+    margin:50px auto;
+    text-align:center;
+    padding:50px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:30px;
+    background:rgba(255,255,255,.03);
+}
+
+.question{
+    font-size:28px;
+    margin-bottom:30px;
+    color:#e9d5ff;
+}
+
+.answer{
+    width:100%;
+    min-height:120px;
+    background:rgba(0,0,0,.2);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+    padding:20px;
+    color:#fff;
+    outline:none;
+    resize:vertical;
+    font-family:inherit;
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(124,58,237,.12),
+            transparent 60%
+        );
+}
+
+.final h2{
+    font-size:clamp(45px,8vw,100px);
+    font-weight:normal;
+    color:#e9d5ff;
+    text-shadow:0 0 40px rgba(168,85,247,.3);
+}
+
+.final p{
+    max-width:650px;
+    margin:30px auto;
+    line-height:2;
+    color:#aaa;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#555;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    section{
+        padding:90px 6%;
+    }
+
+    .cards,
+    .family-grid{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .food-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .letter{
+        padding:35px 25px;
+    }
+
+    .flight-scene{
+        height:350px;
+    }
+
+    .route-dot{
+        font-size:8px;
+    }
+
+    .house{
+        height:270px;
+    }
+
+    .window{
+        width:55px;
+        height:75px;
+        top:65px;
+    }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+    }
+
+}
+
+/* =========================================================
+   FADE
+========================================================= */
+
+.fade-line{
+    height:1px;
+    width:100%;
+    max-width:800px;
+    margin:80px auto;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(216,180,254,.3),
+        transparent
+    );
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     LOADER
+======================================================= -->
+
+<div id="loader">
+    <div class="loader-star"></div>
+    <div class="loader-text">
+        A little world is waiting...
+    </div>
+</div>
+
+<!-- STARS -->
+
+<div id="stars"></div>
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<!-- MUSIC -->
+
+<button class="music-btn" id="musicBtn" title="Music">
+    ♫
+</button>
+
+<audio id="bgMusic" loop>
+   
+    <source src="birthday.mp3" type="audio/mpeg">
+
+
+
+</audio>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            A little birthday world from Bisu
+        </div>
+
+        <h1>TANU</h1>
+
+        <p class="hero-subtitle">
+            Some people become memories.
+            Some memories become stories.
+            And some stories remain special forever.
+        </p>
+
+        <button
+            class="open-btn"
+            onclick="openSurprise()"
+        >
+            OPEN YOUR SURPRISE ❤️
+        </button>
+
+    </div>
+
+    <div class="scroll">
+        Scroll slowly
+    </div>
+
+</header>
+
+
+<!-- =======================================================
+     BIRTHDAY
+======================================================= -->
+
+<section id="birthday">
+
+<div class="section-inner reveal">
+
+    <div class="section-label">
+        Chapter 01
+    </div>
+
+    <h2 class="section-title">
+        Counting down<br>
+        to your day.
+    </h2>
+
+    <p class="section-text">
+        August 20, 2026.
+        A day that deserves a little more than just
+        "Happy Birthday."
+    </p>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <span id="days">00</span>
+            <small>Days</small>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            <small>Hours</small>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<div class="fade-line"></div>
+
+
+<!-- =======================================================
+     MEMORIES
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 02
+    </div>
+
+    <h2 class="section-title reveal">
+        Once upon<br>
+        a time...
+    </h2>
+
+    <p class="section-text reveal">
+        There was a time when we didn't know
+        how many little memories we were about
+        to create.
+    </p>
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <div class="card-icon">📸</div>
+            <h3>The Little Moments</h3>
+            <p>
+                I still remember our first bus journey… 🚌
+It was just a simple trip, but it became special because you were the one who called me and asked me to come with you.
+Maybe for you it was just a normal journey… but for me, it became one of those little memories I never forgot. ❤️
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">💬</div>
+            <h3>The Conversations</h3>
+            <p>
+                Bisu, you love Krishna… then why are you going in the wrong direction? What happened to the person you were in 1st year? Maybe you didn't realize how deeply those words stayed with me.You reminded me that I could become better, and you motivated me when I wasn't doing enough for myself. Thank you for reminding me of the person I wanted to become. 🙏❤️
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">🌙</div>
+            <h3>The Memories</h3>
+            <p>
+                Those college days were full of little moments  conversations, laughs, journeys, arguments and memories.We didn't know then that those ordinary days would become so special.Some of my best college memories will always have a little piece of you in them. ❤️
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     KRISHNA
+======================================================= -->
+
+<section class="krishna">
+
+<div class="section-inner reveal">
+
+    <div class="section-label">
+        A blessing
+    </div>
+
+    <h2 class="section-title">
+        May Krishna<br>
+        always bless you.
+    </h2>
+
+    <div class="blessing-circle">
+
+        <div class="krishna-symbol">
+            🦚
+        </div>
+
+    </div>
+
+    <p class="section-text" style="margin:auto">
+
+        May Krishna protect you and guide you.
+
+        <br><br>
+
+        May He keep you healthy,
+        peaceful and happy.
+
+        <br><br>
+
+        May your family always stay together
+        with love and happiness.
+
+        <br><br>
+
+        And may every sincere dream
+        in your heart find its way toward reality.
+
+        🙏
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FAMILY
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 03
+    </div>
+
+    <h2 class="section-title reveal">
+        The people<br>
+        who make you feel like home.
+    </h2>
+
+    <p class="section-text reveal">
+        Family is one of the most beautiful parts
+        of someone's world.
+    </p>
+
+    <div class="family-grid">
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👩
+            </div>
+
+            <h3>Mama ❤️</h3>
+
+            <p>
+               I first met your Mama at AIIMS. Before that, I had only known her through phone calls. I still remember the nurse asking me,Is he your son?  that little moment stayed with me.I slowly understood how much you love your Mama. Whenever you were in trouble, you would call her first and say, Mama, Bisu mora name daedeichi… kou heichi na pacharaiki.😄Those may seem like small moments, but they showed me how precious your bond with her is.May Krishna always keep your Mama healthy, happy and smiling. 🙏❤️
+            </p>
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👨
+            </div>
+
+            <h3>Papa ❤️</h3>
+
+            <p>
+                I never got the chance to properly meet or talk with your Papa, but I still remember something you once told me Janichu Bisu, mo Baba nka muhare hasa dekhile mate bahut khusi mile… mu bahut khusi hei jae.That sentence showed me how deeply you love your Papa.
+            </p>
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👩
+            </div>
+
+            <h3>Itu Didi ❤️</h3>
+
+            <p>
+                I'll always remember how much you supported me, especially when you helped me go with Tanu for outings.Those little efforts meant a lot to me, and I will always be grateful for them.I also want to sincerely apologize for any words or behavior from my side that may have hurt or disrespected you. 😔Thank you for the support you gave me and for being a part of those memories. 🙏❤️
+            </p>
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👧
+            </div>
+
+            <h3>Tina Didi ❤️</h3>
+
+            <p>
+        Tina Didi I have always felt that Tina didi  very mature and understanding person.I still remember didi telling me Bisu focus on your career. Tuma Mama-Baba achanti.Those simple words showed me that you genuinely cared about my future.I also remember the first time you spoke with me and told me that Tanu was upset and had been crying. Even though it was about a small matter, the way you cared enough to tell me showed me the kind of person you are.And when you later said Sorry jadi mo katha kahar kharap lagithiba it showed me your humility and kindness even more.Thank you for guiding me, understanding me and treating me with kindness. I will always respect and remember that. 🙏❤️
+            </p>
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👦
+            </div>
+
+            <h3>Rishi ❤️</h3>
+
+            <p>
+                Rishi is one of the calmest and sweetest people I’ve ever met.His peaceful nature is something I"ll always remember.May Krishna always bless him with happiness, good health and a beautiful future. 🙏❤️
+                
+            </p>
+
+        </div>
+
+
+        <div class="family-card reveal">
+
+            <div class="family-icon">
+                👦
+            </div>
+
+            <h3>Prinshu ❤️</h3>
+
+            <p>
+                His joyful face, innocent smile and cute little ways always bring happiness.May Krishna always keep that beautiful smile on his face and bless him with a happy, healthy and wonderful life. 🙏❤️
+        
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     INDIA → SOUTH KOREA
+======================================================= -->
+
+<section class="flight-section">
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 04
+    </div>
+
+    <h2 class="section-title reveal">
+        One day...<br>
+        South Korea. 🇰🇷
+    </h2>
+
+    <p class="section-text reveal">
+        Some dreams begin as a small sentence:
+        "I want to go there someday."
+    </p>
+
+
+    <div class="flight-scene reveal">
+
+        <div class="flight-moon"></div>
+
+        <div class="flight-stars">
+
+            <span style="left:10%;top:15%"></span>
+            <span style="left:20%;top:25%"></span>
+            <span style="left:32%;top:12%"></span>
+            <span style="left:44%;top:30%"></span>
+            <span style="left:60%;top:15%"></span>
+            <span style="left:75%;top:28%"></span>
+            <span style="left:88%;top:12%"></span>
+            <span style="left:53%;top:8%"></span>
+
+        </div>
+
+
+        <div class="flight-cloud cloud1"></div>
+        <div class="flight-cloud cloud2"></div>
+
+
+        <div class="flight-route"></div>
+
+
+        <div class="route-dot route-india">
+            INDIA 🇮🇳
+        </div>
+
+        <div class="route-dot route-korea">
+            KOREA 🇰🇷
+        </div>
+
+
+        <div class="plane">
+            ✈️
+        </div>
+
+
+        <div class="flight-caption">
+
+            A journey that begins with a dream...
+
+        </div>
+
+    </div>
+
+
+    <div class="korea-city reveal">
+
+        <div class="building b1"></div>
+        <div class="building b2"></div>
+        <div class="building b3"></div>
+        <div class="building b4"></div>
+        <div class="building b5"></div>
+        <div class="building b6"></div>
+        <div class="building b7"></div>
+
+        <div class="seoul-sign">
+            SEOUL
+        </div>
+
+    </div>
+
+
+    <p
+        class="section-text reveal"
+        style="margin:40px auto;text-align:center"
+    >
+
+        Imagine stepping off the plane one day...
+
+        <br><br>
+
+        Looking around.
+
+        <br><br>
+
+        And quietly thinking:
+
+        <br><br>
+
+        <strong style="color:#d8b4fe">
+            "I finally made it."
+        </strong>
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     💜 BTS / ARMY SECTION
+================================ -->
+
+<section class="bts-section" id="bts">
+
+    <div class="bts-stars"></div>
+
+    <div class="bts-nebula nebula-1"></div>
+    <div class="bts-nebula nebula-2"></div>
+
+    <div class="bts-content">
+
+        <span class="bts-chapter">CHAPTER 08</span>
+
+        <h2 class="bts-title">
+            YOUR PURPLE UNIVERSE
+            <span>💜</span>
+        </h2>
+
+        <p class="bts-subtitle">
+            A little universe for the music, dreams and moments
+            that make her smile.
+        </p>
+
+
+        <!-- CONSTELLATION -->
+
+        <div class="bts-constellation">
+
+            <div class="constellation-line line-1"></div>
+            <div class="constellation-line line-2"></div>
+            <div class="constellation-line line-3"></div>
+            <div class="constellation-line line-4"></div>
+
+
+            <!-- CENTER -->
+
+            <div class="bts-center">
+
+                <div class="bts-orbit orbit-1"></div>
+                <div class="bts-orbit orbit-2"></div>
+
+                <div class="bts-heart">
+                    💜
+                </div>
+
+                <span class="bts-army">
+                    ARMY
+                </span>
+
+            </div>
+
+
+            <!-- STAR 1 -->
+
+            <button
+                class="constellation-star star-1"
+                onclick="showBTS('I may not know every BTS song or memory that means the most to you, but I know this purple universe makes you happy. I hope it always gives you reasons to smile. 💜')">
+                ✦
+            </button>
+
+
+            <!-- STAR 2 -->
+
+            <button
+                class="constellation-star star-2"
+                onclick="showBTS('Keep dreaming, keep growing and keep following the things that make your heart happy. Your story is still being written. ✨')">
+                ✦
+            </button>
+
+
+            <!-- STAR 3 -->
+
+            <button
+                class="constellation-star star-3"
+                onclick="showBTS('Maybe one day you will stand under the Seoul night sky, look around, and realize that a dream you once imagined has finally become real. 🇰🇷💜')">
+                ✦
+            </button>
+
+
+            <!-- STAR 4 -->
+
+            <button
+                class="constellation-star star-4"
+                onclick="showBTS('No matter how far life takes you, I hope you always keep a little purple corner in your heart for the music and memories that made you smile. 💜')">
+                ✦
+            </button>
+
+
+            <!-- STAR 5 -->
+
+            <button
+                class="constellation-star star-5"
+                onclick="showBTS('One day, I hope you look back and realize how many beautiful dreams you were brave enough to chase. 🌙✨')">
+                ✦
+            </button>
+
+
+            <!-- STAR 6 -->
+
+            <button
+                class="constellation-star star-6"
+                onclick="showBTS('Keep smiling, ARMY. There are still so many beautiful chapters waiting for you. 💜')">
+                ✦
+            </button>
+
+        </div>
+
+
+        <!-- BTS MESSAGE -->
+
+        <div class="bts-message">
+
+            <div class="bts-icon">
+                💜
+            </div>
+
+            <h3>
+                FOR THE GIRL WITH A PURPLE UNIVERSE
+            </h3>
+
+            <p>
+                I know BTS and their music have a special place
+                in your world.
+            </p>
+
+            <p>
+                So I wanted to create one small purple universe
+                inside this birthday memory book just for you.
+            </p>
+
+            <p class="bts-highlight">
+                Keep listening.<br>
+                Keep dreaming.<br>
+                Keep shining.
+            </p>
+
+            <p>
+                And maybe one day you'll be standing in Seoul,
+                looking around at a dream that once existed
+                only in your imagination.
+            </p>
+
+            <div class="army-badge">
+                💜 A LITTLE PURPLE UNIVERSE 💜
+            </div>
+
+        </div>
+
+
+        <!-- BTS MEMORY CARDS -->
+
+        <div class="bts-cards">
+
+            <div
+                class="bts-card"
+                onclick="showBTS('You can replace this with her actual favorite BTS song. 🎵💜')">
+
+                <div>🎵</div>
+
+                <h4>
+                    Favorite Song
+                </h4>
+
+                <span>
+                    Tap to open
+                </span>
+
+            </div>
+
+
+            <div
+                class="bts-card"
+                onclick="showBTS('You can replace this with her favorite BTS member or why she loves them. ⭐💜')">
+
+                <div>⭐</div>
+
+                <h4>
+                    Favorite Member
+                </h4>
+
+                <span>
+                    Tap to open
+                </span>
+
+            </div>
+
+
+            <div
+                class="bts-card"
+                onclick="showBTS('You can replace this with her real favorite BTS memory, performance or special moment. 🌙💜')">
+
+                <div>🌙</div>
+
+                <h4>
+                    Favorite Memory
+                </h4>
+
+                <span>
+                    Tap to open
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BTS POPUP -->
+
+<div class="bts-popup" id="btsPopup">
+
+    <div
+        class="bts-popup-background"
+        onclick="closeBTSPopup()">
+    </div>
+
+    <div class="bts-popup-box">
+
+        <button
+            class="bts-popup-close"
+            onclick="closeBTSPopup()">
+            ×
+        </button>
+
+        <div class="bts-popup-heart">
+            💜
+        </div>
+
+        <h3>
+            HER PURPLE UNIVERSE
+        </h3>
+
+        <div class="bts-divider">
+            ✦ ───── 💜 ───── ✦
+        </div>
+
+        <p id="btsPopupText"></p>
+
+        <div class="bts-popup-bottom">
+            ✦ 💜 ✦
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+/* ================================
+   BTS SECTION
+================================ */
+
+.bts-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 110px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(130,70,255,.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #030108,
+            #0b0318,
+            #020106
+        );
+}
+
+
+/* Stars */
+
+.bts-stars,
+.bts-stars::before,
+.bts-stars::after {
+
+    position: absolute;
+    inset: 0;
+
+    content: "";
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 90px 90px;
+
+    opacity: .35;
+
+    animation:
+        btsStarMove 25s linear infinite;
+}
+
+
+.bts-stars::before {
+
+    background-size: 150px 150px;
+
+    opacity: .2;
+
+    animation-duration: 35s;
+}
+
+
+.bts-stars::after {
+
+    background-size: 220px 220px;
+
+    opacity: .12;
+
+    animation-duration: 45s;
+}
+
+
+/* Nebula */
+
+.bts-nebula {
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: .18;
+
+    pointer-events: none;
+}
+
+
+.nebula-1 {
+
+    background: #7136c9;
+
+    left: -150px;
+    top: -120px;
+}
+
+
+.nebula-2 {
+
+    background: #963dff;
+
+    right: -150px;
+    bottom: -150px;
+}
+
+
+/* Content */
+
+.bts-content {
+
+    width: min(1100px, 95%);
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+}
+
+
+/* Chapter */
+
+.bts-chapter {
+
+    color: #b991ff;
+
+    letter-spacing: 5px;
+
+    font-size: 12px;
+}
+
+
+/* Title */
+
+.bts-title {
+
+    margin: 18px 0;
+
+    color: white;
+
+    font-size:
+        clamp(2.4rem, 7vw, 6rem);
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 20px rgba(170,100,255,.8),
+        0 0 60px rgba(110,50,255,.5);
+
+    animation:
+        btsTitleGlow 4s ease-in-out infinite;
+}
+
+
+.bts-title span {
+
+    display: inline-block;
+
+    animation:
+        btsHeartFloat 3s ease-in-out infinite;
+}
+
+
+.bts-subtitle {
+
+    max-width: 650px;
+
+    margin: 0 auto 60px;
+
+    color: #cfc1df;
+
+    line-height: 1.8;
+
+}
+
+
+/* ================================
+   CONSTELLATION
+================================ */
+
+.bts-constellation {
+
+    position: relative;
+
+    width: min(650px, 90vw);
+
+    height: 500px;
+
+    margin: auto;
+}
+
+
+/* Center */
+
+.bts-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 130px;
+    height: 130px;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.bts-heart {
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+
+    background:
+        rgba(130,60,255,.15);
+
+    border:
+        1px solid rgba(210,160,255,.5);
+
+    box-shadow:
+        0 0 25px #8145db,
+        0 0 70px rgba(120,50,255,.6);
+
+    animation:
+        btsPulse 3s ease-in-out infinite;
+
+    z-index: 5;
+}
+
+
+.bts-army {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    color: #d4b2ff;
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+}
+
+
+/* Rings */
+
+.bts-orbit {
+
+    position: absolute;
+
+    border:
+        1px solid rgba(190,130,255,.25);
+
+    border-radius: 50%;
+}
+
+
+.orbit-1 {
+
+    width: 190px;
+    height: 190px;
+
+    animation:
+        btsOrbit 10s linear infinite;
+}
+
+
+.orbit-2 {
+
+    width: 280px;
+    height: 280px;
+
+    animation:
+        btsOrbitReverse 17s linear infinite;
+}
+
+
+/* Lines */
+
+.constellation-line {
+
+    position: absolute;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(188,135,255,.6),
+            transparent
+        );
+
+    opacity: .5;
+}
+
+
+.line-1 {
+
+    width: 230px;
+
+    left: 18%;
+    top: 30%;
+
+    transform: rotate(18deg);
+}
+
+
+.line-2 {
+
+    width: 230px;
+
+    left: 48%;
+    top: 30%;
+
+    transform: rotate(145deg);
+}
+
+
+.line-3 {
+
+    width: 250px;
+
+    left: 22%;
+    top: 70%;
+
+    transform: rotate(-12deg);
+}
+
+
+.line-4 {
+
+    width: 230px;
+
+    left: 50%;
+    top: 70%;
+
+    transform: rotate(190deg);
+}
+
+
+/* ================================
+   STARS
+================================ */
+
+.constellation-star {
+
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ead8ff;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    text-shadow:
+        0 0 10px #b675ff,
+        0 0 30px #914cff,
+        0 0 60px #7830ff;
+
+    animation:
+        btsTwinkle 2.5s ease-in-out infinite;
+
+    transition:
+        transform .35s ease;
+}
+
+
+.constellation-star:hover {
+
+    transform: scale(1.8);
+
+    color: white;
+
+    text-shadow:
+        0 0 20px white,
+        0 0 50px #b879ff,
+        0 0 90px #8b40ff;
+}
+
+
+.star-1 {
+    left: 12%;
+    top: 22%;
+}
+
+.star-2 {
+    left: 23%;
+    top: 65%;
+    animation-delay: .5s;
+}
+
+.star-3 {
+    left: 74%;
+    top: 22%;
+    animation-delay: 1s;
+}
+
+.star-4 {
+    left: 82%;
+    top: 65%;
+    animation-delay: 1.5s;
+}
+
+.star-5 {
+    left: 45%;
+    top: 6%;
+    animation-delay: .8s;
+}
+
+.star-6 {
+    left: 46%;
+    top: 88%;
+    animation-delay: 1.8s;
+}
+
+
+/* ================================
+   MESSAGE CARD
+================================ */
+
+.bts-message {
+
+    max-width: 680px;
+
+    margin: 50px auto;
+
+    padding: 50px 35px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(205,160,255,.25);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.5);
+
+    transition:
+        transform .4s ease;
+}
+
+
+.bts-message:hover {
+
+    transform:
+        translateY(-8px);
+}
+
+
+.bts-icon {
+
+    font-size: 55px;
+
+    animation:
+        btsPulse 2.5s infinite;
+}
+
+
+.bts-message h3 {
+
+    color: white;
+
+    font-size: 28px;
+
+    margin: 20px 0;
+}
+
+
+.bts-message p {
+
+    color: #d7cbe4;
+
+    line-height: 1.9;
+
+}
+
+
+.bts-highlight {
+
+    color: #d2a5ff !important;
+
+    font-size: 21px;
+
+    line-height: 2 !important;
+}
+
+
+.army-badge {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 25px;
+
+    border-radius: 50px;
+
+    color: #e5d0ff;
+
+    border:
+        1px solid rgba(210,160,255,.35);
+
+    background:
+        rgba(140,70,255,.1);
+}
+
+
+/* ================================
+   CARDS
+================================ */
+
+.bts-cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+
+.bts-card {
+
+    padding: 35px 20px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(200,155,255,.18);
+
+    cursor: pointer;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.bts-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 20px 50px rgba(90,30,180,.25);
+}
+
+
+.bts-card div {
+
+    font-size: 38px;
+}
+
+
+.bts-card h4 {
+
+    color: white;
+
+    font-size: 20px;
+
+    margin: 15px 0 8px;
+}
+
+
+.bts-card span {
+
+    color: #bbaacc;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   POPUP
+================================ */
+
+.bts-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+}
+
+
+.bts-popup.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.bts-popup-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(2,0,8,.88);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.bts-popup-box {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(560px, 90%);
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17052b,
+            #08020f
+        );
+
+    border:
+        1px solid rgba(205,160,255,.35);
+
+    box-shadow:
+        0 0 60px rgba(130,60,255,.3),
+        0 30px 100px rgba(0,0,0,.7);
+
+    transform:
+        scale(.7)
+        translateY(40px);
+
+    transition:
+        transform .55s cubic-bezier(.17,.67,.3,1.3);
+}
+
+
+.bts-popup.active .bts-popup-box {
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+.bts-popup-heart {
+
+    font-size: 60px;
+
+    animation:
+        btsPulse 2s infinite;
+}
+
+
+.bts-popup-box h3 {
+
+    color: white;
+
+    font-size: 27px;
+
+    margin: 15px 0;
+}
+
+
+.bts-divider {
+
+    color: #b879ff;
+
+    margin: 20px 0;
+}
+
+
+#btsPopupText {
+
+    color: #e4d6f0;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+.bts-popup-bottom {
+
+    margin-top: 25px;
+
+    color: #c08aff;
+
+    font-size: 22px;
+}
+
+
+.bts-popup-close {
+
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    color: white;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+.bts-popup-close:hover {
+
+    transform: rotate(90deg);
+
+    background:
+        rgba(160,80,255,.3);
+}
+
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes btsStarMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+
+}
+
+
+@keyframes btsTitleGlow {
+
+    0%,100% {
+
+        text-shadow:
+            0 0 20px rgba(170,100,255,.6),
+            0 0 50px rgba(110,50,255,.3);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 30px rgba(220,170,255,.9),
+            0 0 80px rgba(130,60,255,.6);
+
+    }
+
+}
+
+
+@keyframes btsHeartFloat {
+
+    0%,100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px) scale(1.1);
+
+    }
+
+}
+
+
+@keyframes btsPulse {
+
+    0%,100% {
+
+        transform: scale(1);
+
+        filter:
+            drop-shadow(0 0 5px #9b5cff);
+
+    }
+
+    50% {
+
+        transform: scale(1.1);
+
+        filter:
+            drop-shadow(0 0 25px #c08aff);
+
+    }
+
+}
+
+
+@keyframes btsOrbit {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@keyframes btsOrbitReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+
+}
+
+
+@keyframes btsTwinkle {
+
+    0%,100% {
+
+        opacity: .45;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.25);
+
+    }
+
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width:700px) {
+
+    .bts-section {
+
+        padding: 80px 15px;
+
+    }
+
+    .bts-constellation {
+
+        height: 400px;
+
+    }
+
+    .bts-cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .bts-message {
+
+        padding: 35px 20px;
+
+    }
+
+    .star-1 {
+        left: 5%;
+    }
+
+    .star-4 {
+        left: 87%;
+    }
+
+}
+
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bts-stars,
+    .bts-stars::before,
+    .bts-stars::after,
+    .bts-title,
+    .bts-title span,
+    .bts-heart,
+    .bts-orbit,
+    .constellation-star,
+    .bts-popup-heart {
+
+        animation: none !important;
+
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* ================================
+   BTS POPUP
+================================ */
+
+function showBTS(message) {
+
+    const popup =
+        document.getElementById("btsPopup");
+
+    const text =
+        document.getElementById("btsPopupText");
+
+    if (!popup || !text) return;
+
+    text.textContent = message;
+
+    popup.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* CLOSE */
+
+function closeBTSPopup() {
+
+    const popup =
+        document.getElementById("btsPopup");
+
+    if (!popup) return;
+
+    popup.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+/* ESC KEY */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeBTSPopup();
+
+        }
+
+    }
+);
+
+</script>
+
+<!-- =======================================================
+     DREAM HOME
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 06
+    </div>
+
+    <h2 class="section-title reveal">
+        The home<br>
+        you dream of. 🏡
+    </h2>
+
+    <p class="section-text reveal">
+        Maybe a dream home isn't really about how
+        big it is.
+    </p>
+
+
+    <div class="house reveal">
+
+        <div class="roof"></div>
+
+        <div class="window one"></div>
+        <div class="window two"></div>
+
+        <div class="door"></div>
+
+        <div class="house-garden"></div>
+
+    </div>
+
+
+    <p
+        class="section-text reveal"
+        style="margin:auto;text-align:center"
+    >
+
+        Maybe it is about warm lights.
+
+        <br><br>
+
+        Family laughing inside.
+
+        <br><br>
+
+        A peaceful evening.
+
+        <br><br>
+
+        A place that feels safe.
+
+        <br><br>
+
+        <strong style="color:#d8b4fe">
+            I hope you build exactly that kind of life.
+        </strong>
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     DREAM CAFE
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 07
+    </div>
+
+    <h2 class="section-title reveal">
+        Your café dream ☕
+    </h2>
+
+    <p class="section-text reveal">
+        A dream café isn't just a business.
+        It can become a little world of its own.
+    </p>
+
+
+    <div class="cafe-card reveal">
+
+        <div class="cafe-sign">
+            TANU'S DREAM CAFÉ
+        </div>
+
+        <div class="coffee-cup">
+            ☕
+        </div>
+
+        <div class="cafe-steam">
+            ♨
+        </div>
+
+        <div class="cafe-counter"></div>
+
+    </div>
+
+
+    <p
+        class="section-text reveal"
+        style="margin:40px auto;text-align:center"
+    >
+
+        Warm lights.
+
+        <br>
+
+        Good coffee.
+
+        <br>
+
+        Beautiful food.
+
+        <br>
+
+        People feeling comfortable.
+
+        <br><br>
+
+        And a business built from something
+        you genuinely love.
+
+        <br><br>
+
+        <strong style="color:#d8b4fe">
+            May your café dream become real someday.
+        </strong>
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     COOKING
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 08
+    </div>
+
+    <h2 class="section-title reveal">
+        The magic<br>
+        in  your kitchen 👩‍🍳
+    </h2>
+
+    <p class="section-text reveal">
+        Some people make food ,
+        Some people make memories with food.
+    </p>
+
+
+    <div class="food-grid">
+
+        <div class="food reveal">
+            <span>🍛</span>
+            <p>Comfort Food</p>
+        </div>
+
+        <div class="food reveal">
+            <span>🍜</span>
+            <p>Something Warm</p>
+        </div>
+
+        <div class="food reveal">
+            <span>🍰</span>
+            <p>Something Sweet</p>
+        </div>
+
+        <div class="food reveal">
+            <span>🥘</span>
+            <p>Your Special Dish</p>
+        </div>
+
+    </div>
+
+
+    <p
+        class="section-text reveal"
+        style="margin:50px auto;text-align:center"
+    >
+
+        Maybe one day the café will have
+        one special item on the menu
+
+        <br><br>
+
+        <strong style="font-size:25px;color:#d8b4fe">
+            "Chef Tanu's Special" ❤️
+        </strong>
+
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     APOLOGY
+======================================================= -->
+
+<section class="apology">
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Something I wanted to say
+    </div>
+
+    <h2 class="section-title reveal">
+        I'm sorry
+    </h2>
+
+
+    <div class="letter reveal">
+
+        <p>
+            Tanu,
+        </p>
+
+        <p>
+            There are things from the past that I wish
+            I had understood earlier.
+        </p>
+
+        <p>
+            I know I made mistakes.
+            I know there were moments when I was immature,
+            emotional, and didn't understand your feelings
+            the way I should have.
+        </p>
+
+        <p>
+            There were moments when I should have listened
+            instead of arguing.
+        </p>
+
+        <p>
+            Moments when I should have understood
+            instead of assuming.
+        </p>
+
+        <p>
+            Moments when I should have given peace
+            instead of creating more tension.
+        </p>
+
+        <p>
+            I'm genuinely sorry for those moments.
+        </p>
+
+        <p>
+            I cannot go back and rewrite them.
+            And I don't want to pretend that saying sorry
+            magically fixes everything.
+        </p>
+
+        <p>
+            It doesn't.
+        </p>
+
+        <p>
+            But I wanted you to know that I remember them.
+            I learned from them.
+            And I am trying to become a better person because
+            of them.
+        </p>
+
+        <p>
+            You don't have to forgive me today.
+        </p>
+
+        <p>
+            You don't have to respond.
+        </p>
+
+        <p>
+            You don't have to make any decision.
+        </p>
+
+        <p>
+            I simply wanted to say I'm sorry.
+        </p>
+
+        <p>
+            Thank you for the beautiful memories,
+            the lessons, the laughter and the time.
+        </p>
+
+        <div class="signature">
+            — Bisu ❤️
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     QUESTIONS
+======================================================= -->
+
+
+<!-- =======================================================
+     GROWTH
+======================================================= -->
+
+<section>
+
+<div class="section-inner">
+
+    <div class="section-label reveal">
+        Chapter 09
+    </div>
+
+    <h2 class="section-title reveal">
+        What I learned.
+    </h2>
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <div class="card-icon">👂</div>
+            <h3>Listen</h3>
+            <p>
+                Listening is more important than
+                winning an argument.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">🌱</div>
+            <h3>Grow</h3>
+            <p>
+                Real growth happens even when
+                nobody is watching.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">🙏</div>
+            <h3>Gratitude</h3>
+            <p>
+                Appreciate people and moments
+                while they are part of your life.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">❤️</div>
+            <h3>Respect</h3>
+            <p>
+                Care should always come with
+                respect and understanding.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">🧘</div>
+            <h3>Patience</h3>
+            <p>
+                Not every emotion needs an immediate
+                reaction.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-icon">🌅</div>
+            <h3>Tomorrow</h3>
+            <p>
+                I cannot change yesterday,
+                but I can become better tomorrow.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL LETTER
+======================================================= -->
+
+<section class="final">
+
+<div class="section-inner reveal">
+
+    <div class="section-label">
+        The last page
+    </div>
+
+    <h2>
+        Happy Birthday,<br>
+        Tanu ❤️
+    </h2>
+
+    <p>
+
+        I made this little world because
+        I wanted your birthday to be more than
+        two words on a screen.
+
+        <br><br>
+
+        I hope you achieve the dreams
+        you carry inside your heart.
+
+        <br><br>
+
+        I hope you build your dream home.
+
+        <br><br>
+
+        I hope your café becomes real.
+
+        <br><br>
+
+        I hope your cooking continues to
+        make people happy.
+
+        <br><br>
+
+        I hope you visit South Korea someday.
+
+        <br><br>
+
+        I hope BTS continues to bring
+        little moments of happiness into your life.
+
+        <br><br>
+
+        Most importantly,
+
+        <br><br>
+
+        <strong style="color:#d8b4fe;font-size:24px">
+            I hope you are genuinely happy.
+        </strong>
+
+        <br><br>
+
+        May Krishna bless you,
+        Mama, Papa, Big Didi,
+        Small Didi and the two little ones.
+
+        🙏
+
+    </p>
+
+
+    <button
+        class="open-btn"
+        onclick="finalMessage()"
+    >
+        ONE LAST MESSAGE ✨
+    </button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+    Made with memories, gratitude and good wishes.
+    <br><br>
+    — Bisu ❤️
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .getElementById("loader")
+            .classList
+            .add("hidden");
+
+    },1500);
+
+});
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+const starsContainer =
+    document.getElementById("stars");
+
+for(let i=0;i<180;i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className="star";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.top =
+        Math.random()*100+"%";
+
+    const size =
+        Math.random()*2+1;
+
+    star.style.width=size+"px";
+    star.style.height=size+"px";
+
+    star.style.animationDuration =
+        (2+Math.random()*5)+"s";
+
+    star.style.animationDelay =
+        Math.random()*5+"s";
+
+    starsContainer.appendChild(star);
+}
+
+
+/* =========================================================
+   OPEN SURPRISE
+========================================================= */
+
+function openSurprise(){
+
+    document
+        .getElementById("birthday")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target
+                        .classList
+                        .add("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el => observer.observe(el));
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const birthday =
+    new Date("August 20, 2026 00:00:00").getTime();
+
+
+function updateCountdown(){
+
+    const now =
+        new Date().getTime();
+
+    const distance =
+        birthday-now;
+
+
+    if(distance<=0){
+
+        document.getElementById("days").textContent="00";
+        document.getElementById("hours").textContent="00";
+        document.getElementById("minutes").textContent="00";
+        document.getElementById("seconds").textContent="00";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            distance/(1000*60*60*24)
+        );
+
+    const hours =
+        Math.floor(
+            (distance%(1000*60*60*24))
+            /(1000*60*60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance%(1000*60*60))
+            /(1000*60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance%(1000*60))
+            /1000
+        );
+
+
+    document.getElementById("days")
+        .textContent=String(days).padStart(2,"0");
+
+    document.getElementById("hours")
+        .textContent=String(hours).padStart(2,"0");
+
+    document.getElementById("minutes")
+        .textContent=String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds")
+        .textContent=String(seconds).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const music =
+    document.getElementById("bgMusic");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+let musicPlaying=false;
+
+musicBtn.addEventListener("click", async()=>{
+
+    if(!music.currentSrc && !music.src){
+
+        alert(
+            "Add your own music file inside the audio section of the HTML first."
+        );
+
+        return;
+    }
+
+    if(!musicPlaying){
+
+        try{
+
+            await music.play();
+
+            musicPlaying=true;
+
+            musicBtn.textContent="❚❚";
+
+        }catch(error){
+
+            console.log(error);
+
+        }
+
+    }else{
+
+        music.pause();
+
+        musicPlaying=false;
+
+        musicBtn.textContent="♫";
+
+    }
+
+});
+
+
+/* =========================================================
+   BTS POPUP
+========================================================= */
+
+function showBTS(type){
+
+    const message =
+        "💜 "+type+
+        " ";
+
+    alert(message);
+
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+function finalMessage(){
+
+    const overlay =
+        document.createElement("div");
+
+    overlay.style.position="fixed";
+    overlay.style.inset="0";
+    overlay.style.background=
+        "radial-gradient(circle,#24103d,#030106 70%)";
+
+    overlay.style.zIndex="99999";
+
+    overlay.style.display="flex";
+    overlay.style.alignItems="center";
+    overlay.style.justifyContent="center";
+
+    overlay.style.textAlign="center";
+
+    overlay.style.padding="30px";
+
+    overlay.innerHTML=`
+
+        <div style="max-width:750px">
+
+            <div style="
+                font-size:12px;
+                letter-spacing:6px;
+                color:#a78bfa;
+                margin-bottom:30px;
+            ">
+                ONE LAST THING
+            </div>
+
+            <div style="
+                font-size:clamp(35px,7vw,80px);
+                color:#e9d5ff;
+                line-height:1.2;
+                text-shadow:0 0 40px rgba(168,85,247,.5);
+            ">
+                Keep dreaming.<br>
+                Keep travelling.<br>
+                Keep smiling.
+            </div>
+
+            <p style="
+                color:#aaa;
+                line-height:2;
+                margin-top:35px;
+            ">
+
+                May one day your dreams take you
+                to South Korea. 🇰🇷💜
+
+                <br><br>
+
+                May your dream home become real.
+
+                <br>
+
+                May your dream café become real.
+
+                <br>
+
+                May your cooking continue
+                to make people happy.
+
+                <br><br>
+
+                May Krishna always bless you
+                and your family. 🙏
+
+                <br><br>
+
+                <strong style="
+                    color:#fff;
+                    font-size:22px;
+                ">
+                    Happy Birthday, Tanu. ❤️
+                </strong>
+
+            </p>
+
+            <button
+                onclick="this.parentElement.parentElement.remove()"
+                style="
+                    margin-top:35px;
+                    padding:14px 28px;
+                    border-radius:50px;
+                    background:transparent;
+                    color:white;
+                    border:1px solid rgba(255,255,255,.2);
+                    cursor:pointer;
+                "
+            >
+                Close
+            </button>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(overlay);
+
+}
+
+
+/* =========================================================
+   PARALLAX EFFECT
+========================================================= */
+
+window.addEventListener("mousemove",(e)=>{
+
+    const x =
+        (e.clientX/window.innerWidth-.5);
+
+    const y =
+        (e.clientY/window.innerHeight-.5);
+
+    document
+        .querySelectorAll(".ambient")
+        .forEach((el,index)=>{
+
+            const amount =
+                index===0 ? 20 : -20;
+
+            el.style.transform=
+                `translate(${x*amount}px,${y*amount}px)`;
+
+        });
+
+});
+
+
+/* =========================================================
+   KEYBOARD ACCESS
+========================================================= */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Enter" &&
+       document.activeElement.tagName!=="TEXTAREA"){
+
+        openSurprise();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
